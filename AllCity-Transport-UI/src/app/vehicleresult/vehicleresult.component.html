@@ -1,0 +1,34 @@
+<!-- room-result.component.html -->
+<section>
+    @if (vehicleSearchResults && vehicleSearchResults.length > 0) {
+        <div
+        *ngFor="let vehicle of vehicleSearchResults"
+        class="item"
+        [attr.key]="vehicle.id"
+      >
+        <img [src]="vehicle.imageUrl" [alt]="vehicle.vehicleRegNo" />
+  
+        <div class="details">
+          <h3>{{ vehicle.type }}</h3>
+          <p>Price: ${{ vehicle.price }}</p>
+          <p>Description: {{ vehicle.description }}</p>
+        </div>
+  
+        <div class="book-now">
+          <!-- Conditionally render button based on admin status -->
+          @if (isAdmin) {
+            <button (click)="navigateToEditVehicle(vehicle.id)">
+            Edit Vehicle
+          </button>
+          }
+          @if (!isAdmin) {
+            <button= (click)="navigateToVehicleDetails(vehicle.id)">
+            View/Book Now
+          </button>
+          }
+        </div>
+      </div>
+    }
+
+  </section>
+  

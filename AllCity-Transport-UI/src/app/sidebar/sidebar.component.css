@@ -1,0 +1,48 @@
+.sidebar {
+  width: 220px;
+  background-color: #f9f9f9;
+  position: fixed;
+  top: 85px; /* increase this to match your header height */
+  bottom: 60px; /* leave space for footer */
+  left: 0;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  padding-top: 15px;
+  transition: all 0.3s ease;
+  z-index: 1; /* ensure it stays below the navbar */
+}
+
+.sidebar-header {
+  text-align: center;
+  color: #006d77;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin: 5px 0;
+}
+
+.sidebar-nav a {
+  display: block;
+  color: #333;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  background-color: #006d77;
+  color: #fff;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+}

@@ -1,0 +1,27 @@
+<nav>
+    <div class="brand">
+        <a href="/home">All City Transport</a>
+    </div>
+    <ul>
+        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/vehicle" routerLinkActive="active">Vehicle</a></li>
+        <li><a routerLink="/find-booking" routerLinkActive="active">Find Booking</a></li>
+
+        @if (isCustomer) {
+              <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+            }
+        @if (isAdmin) {
+              <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
+            }
+        @if (!isAuthemticated) {
+              <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+            }
+        @if (!isAuthemticated) {
+               <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+
+            }
+        @if (isAuthemticated) {
+              <li (click)="handleLogout()">Logout</li>
+            }      
+    </ul>
+</nav>
