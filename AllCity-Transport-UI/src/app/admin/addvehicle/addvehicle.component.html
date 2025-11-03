@@ -1,0 +1,109 @@
+<div class="container">
+    <h2>Add Vehicle</h2>
+    <!-- Error and Success messages -->
+    @if (error) {<div class="error">{{ error }}</div>}
+    @if (success) {<div class="success">{{ success }}</div>}
+  
+    <!-- Room Details Form -->
+    <div class="room-form">
+      <!-- Room Image Upload -->
+      <div class="form-group">
+        @if (preview) {
+        <div>
+          <img [src]="preview" alt="Vehicle Preview" />
+        </div>
+        }
+        
+        <input type="file" name="imageFile" (change)="handleFileChange($event)" />
+      </div>
+
+        <div class="row-pair">
+            <!-- Room Type -->
+            <div class="form-group half-width">
+                <label>Vehicle Permit</label>
+                <select [(ngModel)]="vehicleDetails.permitLevel" (change)="handleVehiclePermitLevelChange($event)">
+                <option value="">Select a Vehicle Permit</option>
+                <option *ngFor="let permitLevel of permitLevels" [value]="permitLevel">{{ permitLevel }}</option>
+                </select>
+            </div>
+
+        <div class="form-group half-width">
+                <label>Vehicle Type</label>
+                <select [(ngModel)]="vehicleDetails.vehicleType" (change)="handleVehicleTypeChange($event)">
+                <option value="">Select a Vehicle Type</option>
+                <option *ngFor="let vehicleType of vehicleTypes" [value]="vehicleType">{{ vehicleType }}</option>
+                </select>
+            </div>
+       </div>
+
+         <div class="row-pair">
+            <div class="form-group half-width">
+                <label>Registration No.</label>
+                <input
+                type="text"
+                name="vehicleRegNo"
+                [(ngModel)]="vehicleDetails.vehicleRegNo"
+                (input)="handleChange($event)"/>
+            </div>
+            <div class="form-group half-width">
+                <label>Driver Mobile</label>
+                <input
+                type="number"
+                name="driverMob"
+                [(ngModel)]="vehicleDetails.driverMob"
+                (input)="handleChange($event)"/>
+            </div>
+          </div>
+
+          <div class="row-pair">
+            <div class="form-group half-width">
+                <label>One Way Price</label>
+                <input
+                type="number"
+                name="price"
+                [(ngModel)]="vehicleDetails.price"
+                (input)="handleChange($event)"/>
+            </div>
+            <div class="form-group half-width">
+                <label>Capacity weight/passenger</label>
+                <input
+                type="number"
+                name="capacity"
+                [(ngModel)]="vehicleDetails.capacity"
+                (input)="handleChange($event)"/>
+            </div>
+          </div>
+          <div class="row-pair">
+            <div class="form-group half-width">
+                <label>From</label>
+                <input
+                type="text"
+                name="from"
+                [(ngModel)]="vehicleDetails.originCity"
+                (input)="handleChange($event)"/>
+            </div>
+            <div class="form-group half-width">
+                <label>To</label>
+                <input
+                type="text"
+                name="to"
+                [(ngModel)]="vehicleDetails.destinationCity"
+                (input)="handleChange($event)"/>
+            </div>
+          </div>
+
+      <!-- Room Description -->
+      <div class="form-group">
+        <label>Room Description</label>
+        <textarea
+          name="description"
+          [(ngModel)]="vehicleDetails.description"
+          (input)="handleChange($event)"
+        ></textarea>
+      </div>
+  
+      <!-- Submit Button -->
+      <button (click)="addRoom()">Add Room</button>
+    </div>
+  </div>
+  

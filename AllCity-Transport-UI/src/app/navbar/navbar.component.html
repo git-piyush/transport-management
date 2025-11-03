@@ -1,4 +1,4 @@
-<nav>
+<nav class="fixed-navbar">
     <div class="brand">
         <a href="/home">All City Transport</a>
     </div>
@@ -7,7 +7,7 @@
         <li><a routerLink="/vehicle" routerLinkActive="active">Vehicle</a></li>
         <li><a routerLink="/find-booking" routerLinkActive="active">Find Booking</a></li>
 
-        @if (isCustomer) {
+        @if (isAuthemticated) {
               <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
             }
         @if (isAdmin) {

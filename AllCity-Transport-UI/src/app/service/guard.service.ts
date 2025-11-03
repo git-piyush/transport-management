@@ -12,12 +12,11 @@ export class GuardService implements CanActivate {
     state: RouterStateSnapshot): boolean{
 
     const requiresAdmin = route.data['requiresAdmin'] || false;
-
     if (requiresAdmin) {
       if(this.apiService.isAdmin()){
         return true; //allow acceess for admin if the user is an admin
-      }else{
-        this.router.navigate(['/login'], {
+      }else{          
+          this.router.navigate(['/login'], {
           queryParams: {returnUrl: state.url}
         });
         return false; //deny access to the route if the user is not an admin

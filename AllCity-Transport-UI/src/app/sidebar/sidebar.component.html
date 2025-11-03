@@ -3,6 +3,9 @@
     <h3>Menu</h3>
   </div>
   <ul class="sidebar-nav">
+    @if (isAdmin) {
+      <li><a routerLink="/admin/add-vehicle" routerLinkActive="active">Add Vehicle</a></li>
+    }
     <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
     <li><a routerLink="/vehicle" routerLinkActive="active">Vehicle</a></li>
     <li><a routerLink="/find-booking" routerLinkActive="active">Find Booking</a></li>

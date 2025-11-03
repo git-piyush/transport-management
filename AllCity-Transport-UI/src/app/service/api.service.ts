@@ -77,10 +77,15 @@ export class ApiService {
     });
   }
 
-
-  // ROOMS API METHODS
-  addRoom(formData: any): Observable<any> {
-    return this.http.post(`${ApiService.BASE_URL}/rooms/add`, formData, {
+    // AUTH API METHODS
+  // addVehicle(formData: any): Observable<any> {
+  //   return this.http.post(`${ApiService.BASE_URL}/vehicle/add-vehicle`, formData);
+  // }
+  
+  // BOOKINGS API METHODS
+  addVehicle(vehicleDTO: any): Observable<any> {
+    console.log(vehicleDTO);
+    return this.http.post(`${ApiService.BASE_URL}/vehicle/add-vehicle`, vehicleDTO, {
       headers: this.getHeader(),
     });
   }
@@ -91,18 +96,24 @@ export class ApiService {
     });
   }
 
-  getAvailableRooms(
-    checkInDate: string,
-    checkOutDate: string,
-    roomType: string
-  ): Observable<any> {
-    return this.http.get(`${ApiService.BASE_URL}/rooms/available`, {
-      params: { checkInDate, checkOutDate, roomType },
-    });
+  getAvailableRooms(): Observable<any> {
+    return this.http.get(`${ApiService.BASE_URL}/vehicle/all-vehicle`);
   }
 
   getRoomTypes(): Observable<any> {
     return this.http.get(`${ApiService.BASE_URL}/rooms/types`);
+  }
+
+  fetchVehiclePermitLevel(): Observable<any> {
+    return this.http.get(`${ApiService.BASE_URL}/vehicle/vehicle-permit`, {
+      headers: this.getHeader(),
+    });
+  }
+
+  fetchVehicleTypes(): Observable<any> {
+    return this.http.get(`${ApiService.BASE_URL}/vehicle/vehicle-type`, {
+      headers: this.getHeader(),
+    });
   }
 
   getAllRooms(): Observable<any> {

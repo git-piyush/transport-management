@@ -2,12 +2,12 @@
   width: 220px;
   background-color: #f9f9f9;
   position: fixed;
-  top: 85px; /* increase this to match your header height */
+  top: 75px; /* increase this to match your header height */
   bottom: 60px; /* leave space for footer */
   left: 0;
   border-right: 1px solid #ddd;
   overflow-y: auto;
-  padding-top: 15px;
+  padding-top: 5px;
   transition: all 0.3s ease;
   z-index: 1; /* ensure it stays below the navbar */
 }

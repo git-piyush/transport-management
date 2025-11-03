@@ -49,3 +49,13 @@ li a:hover {
 li a.active {
     color: #FF7F50;
 }
+
+
+.fixed-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* ensures it stays above other content */
+}
+

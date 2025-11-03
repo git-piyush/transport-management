@@ -3,16 +3,17 @@ import { ApiService } from '../service/api.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, MatSnackBarModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
 
-  constructor( private apiService: ApiService, private router: Router){}
+  constructor( private apiService: ApiService, private router: Router, private snackBar: MatSnackBar){}
   
   formData: any = {
 
@@ -39,6 +40,9 @@ export class RegisterComponent {
 
     this.apiService.registerUser(this.formData).subscribe({
       next:(res: any) => {
+        this.snackBar.open("Registration Sucessful", 'Close',{
+        duration: 5000
+      });
         this.router.navigate(['/login'])
       },
       error: (err: any) => {
@@ -51,6 +55,6 @@ export class RegisterComponent {
     this.error = msg;
     setTimeout(()=> {
       this.error = null
-    }, 4000);
+    }, 8000);
   }
 }

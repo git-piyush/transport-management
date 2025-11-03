@@ -37,7 +37,7 @@ public class Response {
 
     //Room data output
    // private RoomDTO room;
-  //  private List<RoomDTO> rooms;
+    private List<VehicleDTO> vehicleDTOS;
 
     //Payment data output
    // private PaymentDTO payment;

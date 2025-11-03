@@ -1,5 +1,5 @@
 package com.allcity.enums;
 
 public enum VehicleType {
-    LORI
+    TRUCK, LORI, MINITRUCK, BUS
 }
