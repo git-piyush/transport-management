@@ -1,61 +1,130 @@
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 70px 25px 75px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-    font-size: 20px;
-}
-
-
-.brand a {
-    font-size: 24px;
-    font-weight: bold;
-    color: #007F86;
-    text-decoration: none;
-}
-
-
-ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    flex-wrap: wrap;
-}
-
-
-li {
-    margin-left: 20px;
-}
-
-
-li a {
-    text-decoration: none;
-    color: #666;
-    transition: color 0.5s;
-}
-
-
-li a:hover {
-    color: #FF007F;
-    color: #FF7F50;
-}
-
-
-li a.active {
-    color: #FF7F50;
-}
-
-
-.fixed-navbar {
+/* === Navbar Base === */
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  z-index: 1000; /* ensures it stays above other content */
+  right: 0; /* 👈 ensures full width within viewport */
+  width: 100%;
+  background: #121212;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+  z-index: 1000;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* 👈 ensures padding doesn’t overflow */
+  overflow-x: hidden; /* 👈 prevents accidental horizontal scroll */
 }
 
+/* Prevent overall body scroll issues */
+body {
+  margin: 0;
+  overflow-x: hidden; /* 👈 ensures no horizontal scrollbar globally */
+}
+
+/* === Brand === */
+.navbar .brand a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #4fc3f7;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.navbar .brand a:hover {
+  color: #81d4fa;
+  text-shadow: 0 0 8px #4fc3f7;
+}
+
+/* === Nav Links === */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar ul li {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.navbar ul li a,
+.navbar ul li.logout {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* Hover and Active Effects */
+.navbar ul li a:hover,
+.navbar ul li.logout:hover {
+  color: #4fc3f7;
+  background: rgba(79, 195, 247, 0.1);
+  box-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+}
+
+.navbar ul li a.active {
+  color: #4fc3f7;
+  border-bottom: 2px solid #4fc3f7;
+}
+
+/* Logout Link */
+.logout {
+  color: #ef5350;
+  font-weight: 600;
+}
+.logout:hover {
+  background: rgba(239, 83, 80, 0.15);
+  box-shadow: 0 0 10px rgba(239, 83, 80, 0.3);
+}
+
+/* === Mobile Toggle === */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #f0f0f0;
+}
+
+/* === Responsive Styles === */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    width: 100%;
+    background: #1e1e1e;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    border-top: 1px solid #333;
+    margin-top: 10px;
+  }
+
+  .navbar ul.active {
+    max-height: 400px;
+    padding: 10px 0;
+  }
+
+  .navbar ul li {
+    text-align: center;
+    margin: 8px 0;
+  }
+}

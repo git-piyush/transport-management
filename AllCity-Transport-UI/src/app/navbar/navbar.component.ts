@@ -14,6 +14,12 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 export class NavbarComponent {
   constructor(private router: Router, private apiService: ApiService){}
 
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+}
+
   get isAuthemticated():boolean{
     return this.apiService.isAuthenticated();
   }

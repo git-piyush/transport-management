@@ -6,6 +6,7 @@ import com.allcity.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,6 +27,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Response> loginUser(@RequestBody @Valid LoginRequest request){
-        return ResponseEntity.ok(userService.loginUser(request));
+      return ResponseEntity.status(HttpStatus.CREATED).body(userService.loginUser(request));
     }
 }

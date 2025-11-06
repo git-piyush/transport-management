@@ -73,13 +73,14 @@ public class UserServiceImpl implements UserService {
         String token = jwtUtils.generateToken(user.getEmail());
 
 
+
         return Response.builder()
                 .status(200)
                 .message("user logged in successfully")
                 .role(user.getRole())
                 .token(token)
                 .isActive(user.getIsActive())
-                .expirationTime("6 months")
+                .expirationTime("6 months").userName(user.getFirstName())
                 .build();
     }
 
